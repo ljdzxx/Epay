@@ -1,8 +1,15 @@
 {
     "require": {
-        "cccyun/alipay-sdk": "^1.1",
-        "cccyun/wechatpay-sdk": "^1.0",
-        "cccyun/qqpay-sdk": "^1.0",
-        "lpilp/guomi": "^1.0"
+        "cccyun/alipay-sdk": "^1.10",
+        "cccyun/qqpay-sdk": "^1.3",
+        "cccyun/wechatpay-sdk": "^1.11",
+        "lpilp/guomi": "^2.0"
+    },
+    "config": {
+        "allow-plugins": false,
+        "platform": {
+            "php": "8.3.36"
+        },
+        "sort-packages": true
     }
 }

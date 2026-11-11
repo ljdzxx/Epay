@@ -1,0 +1,11 @@
+<?php
+
+// Copy to the project root as config.php and fill in the deployment database.
+$dbconfig = [
+    'host' => 'db.example.internal',
+    'port' => 3306,
+    'user' => 'epay_app',
+    'pwd' => 'CHANGE_ME',
+    'dbname' => 'epay',
+    'dbqz' => 'pay',
+];

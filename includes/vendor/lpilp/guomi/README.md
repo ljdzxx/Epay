@@ -1,12 +1,23 @@
 # php sm2 sm3 sm4 国密算法整理
 * 本项目支持php版本的国密sm2的签名算法，非对称加解密算法，sm3的hash，  sm4的对称加解密，要求PHP７，打开gmp支持
 * 目前如果服务器配套的使用的是openssl 1.1.1x， 目前到1.1.1.l(w) ，sm3，sm4都可以直接用openssl_xxx系列函数直接实现，不必大量的代码，不支持sm2的签名，sm2的加解密
+* 该版本是基于PHP-ECC,也支持其他的椭圆算法的，依赖比较多，如果只想要简单的 sm2相关的签名，加密，可以使用本版本的简化版 https://github.com/lpilp/simplesm2
+ 
+## 安装
 
-### 使用
-* composer require lpilp/guomi
-* please make sure you upgrade to Composer 2+
-* PHP >=7.2,打开gmp组件支持
-* 如需要使用php5.6 请使用wzhih童鞋fork修改的 https://github.com/wzhih/guomi ; composer require wzhih/guomi 或是使用该项目的简化版本 https://github.com/lpilp/simplesm2
+```
+composer require lpilp/guomi
+```
+> 请确保你升级到 `composer 2` 及以上版本。`PHP >=7.2`,打开gmp组件支持。
+
+如需要使用php5.6 请使用wzhih童鞋fork修改的 https://github.com/wzhih/guomi ;
+```
+composer require wzhih/guomi
+```
+> 或是使用该项目的简化版本 https://github.com/lpilp/simplesm2
+
+## 使用
+
 ### SM2
 * 签名验签算法主体基于PHPECC算法架构，添加了sm2的椭圆参数，
 * 参考了 https://github.com/ToAnyWhere/phpsm2 童鞋的sm2验签算法，密钥生成算法
@@ -14,6 +25,11 @@
 * 支持从文件中读取pem文件的签名，验签算法
 * 由于 openssl没有实现sm2withsm3算法，用系统函数无法实现签名及证书的自签名分发
 
+### SM2签名常见问题
+  * 提供的私钥是base64的短串，一般直接 bin2hex(base64_decode(str)) 就是明文的密钥了
+  * 文件格式的密钥一般有pkcs1与pkcs8两个格式，本项目只支持pkcs1格式的密钥，使用前请先进行相关的转换，一般 pkcs8是四行，pkcs1是三行，区别见 https://www.jianshu.com/p/a428e183e72e
+  * 关于签名的字符串的问题，有些项目会将原始字符串哈稀后，再对哈稀值进行签名，有些对这哈稀值又进行了hex2bin操作后再签名，请双方按约定的标准确定最后签名的数据值，双方保持一致即可
+  * 签名的结果是asn1(r,s)，个别的项目签名出来的只是 r+s的字符串组合，验证签名的时候注意下。 base64的签名如果以MEU开头的(hex的话是30开头)，这个是asn1的，如解开后是固定64字节（hex是 128的）是r + s 的  在src/util/SmSignFormatRS.php 有相关的转换函数，请按需使用
 ### SM2非对称加密
 * 添加了sm2的非对称加密的算法，但速度一般，有待优化，不能保证兼容所有语言进行加解密，目前测试了js， python的相互加解密
 * sm2的加密解密算法在openssl 1.1.1的版本下自带的函数中暂无sm2的公钥私钥的加密函数，得自己实现，建议使用C，C++的算法，打包成PHP扩展的方式
@@ -44,12 +60,9 @@
 + C#: 项目也比较少，基本是基于https://www.bouncycastle.org/ 的BC加密库(java也是基于该库)，该库1.8.4后版本支持sm2，sm3，sm4，考察搜索到的几个项目，https://github.com/hz281529512/SecretTest 完整性算比较好
 + C: https://github.com/guanzhi/GmSSL 北大计算机的开源项目，fork多,star也多。
 + php-openssl:  php7 好像支持了sm3, 在openssl1.1.1以上，可用编译的方式加入sm3,sm4的支持。 xampp套件下的php7以上的版本支持sm3, sm4的openssl_系列函数， openssl_get_md_methods() 查看是否支持sm3, openssl_get_cipher_methods() 查看是否支持sm4
-### SM2签名常见问题
-  * 提供的私钥是base64的短串，一般直接 bin2hex(base64_decode(str)) 就是明文的密钥了
-  * 文件格式的密钥一般有pkcs1与pkcs8两个格式，本项目只支持pkcs1格式的密钥，使用前请先进行相关的转换，一般 pkcs8是四行，pkcs1是三行，区别见 https://www.jianshu.com/p/a428e183e72e
-  * 关于签名的字符串的问题，有些项目会将原始字符串哈稀后，再对哈稀值进行签名，有些对这哈稀值又进行了hex2bin操作后再签名，请双方按约定的标准确定最后签名的数据值，双方保持一致即可
-  * 签名的结果是asn1(r,s)，个别的项目签名出来的只是 r+s的字符串组合，验证签名的时候注意下。 base64的签名如果以MEU开头的，这个是asn1的，解开后是64字节是r + s 的  在src/util/SmSignFormatRS.php 有相关的转换函数，请按需使用
-### 特别注意
+
+
+## 特别注意
   * sm2的构造函数中缺省是固定了中间椭圆，目前发现个别的接入方（目前发现是招行金融平台）将这个中间椭圆私钥随机算法给加黑了， 请使用的时候 $randFixed 设为false 以及重新生成一个中间椭圆的密钥对替换原有程序的数据
 ```
 function __construct($formatSign='hex', $randFixed = true) {

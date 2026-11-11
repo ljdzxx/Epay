@@ -1,0 +1,12 @@
+services:
+  php:
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+    container_name: epay-php
+    restart: unless-stopped
+    working_dir: /opt/epay
+    volumes:
+      - ./:/opt/epay
+    ports:
+      - "127.0.0.1:9000:9000"

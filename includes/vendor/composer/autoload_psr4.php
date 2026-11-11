@@ -9,7 +9,8 @@ return array(
     'WeChatPay\\' => array($vendorDir . '/cccyun/wechatpay-sdk/src'),
     'Rtgm\\' => array($vendorDir . '/lpilp/guomi/src'),
     'QQPay\\' => array($vendorDir . '/cccyun/qqpay-sdk/src'),
-    'Mdanter\\Ecc\\' => array($vendorDir . '/mdanter/ecc/src'),
-    'FG\\' => array($vendorDir . '/fgrosse/phpasn1/lib'),
+    'ParagonIE\\Sodium\\' => array($vendorDir . '/paragonie/sodium_compat/namespaced'),
+    'Mdanter\\Ecc\\' => array($vendorDir . '/paragonie/ecc/src'),
+    'FG\\' => array($vendorDir . '/genkgo/php-asn1/lib'),
     'Alipay\\' => array($vendorDir . '/cccyun/alipay-sdk/src'),
 );

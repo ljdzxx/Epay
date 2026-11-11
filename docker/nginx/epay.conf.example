@@ -1,0 +1,39 @@
+# Initial setup: access through an SSH tunnel. See docker/php/UPGRADE.md
+# for the HTTPS settings to use when opening the site to the public.
+server {
+    listen 127.0.0.1:8080;
+    server_name _;
+
+    # Host directory. PHP sees the same project at /opt/epay in its container.
+    root /opt/epay;
+    index index.php index.html;
+
+    location / {
+        if (!-e $request_filename) {
+            rewrite ^/(.[a-zA-Z0-9\-_]+).html$ /index.php?mod=$1 last;
+        }
+        rewrite ^/pay/(.*)$ /pay.php?s=$1 last;
+        rewrite ^/api/(.*)$ /api.php?s=$1 last;
+        rewrite ^/doc/(.[a-zA-Z0-9\-_]+).html$ /index.php?doc=$1 last;
+    }
+
+    location ^~ /includes { deny all; }
+    location ^~ /plugins { deny all; }
+    location ^~ /docker { deny all; }
+    location = /config.php { deny all; }
+
+    location ~ /\.(?!well-known(?:/|$)) { deny all; }
+    location ~* \.(?:sql|log|bak|lock|ini|pem|key|p12|pfx)$ { deny all; }
+    location ~* ^/assets/uploads/.*\.(?:php|phtml|phar)(?:/|$) { deny all; }
+
+    # After installing, add: location ^~ /install/ { deny all; }
+    location ~ \.php$ {
+        try_files $uri =404;
+        include fastcgi_params;
+        # This is the path INSIDE the container, even if root above changes.
+        fastcgi_param SCRIPT_FILENAME /opt/epay$fastcgi_script_name;
+        fastcgi_param HTTPS $https if_not_empty;
+        fastcgi_pass 127.0.0.1:9000;
+        fastcgi_read_timeout 300s;
+    }
+}

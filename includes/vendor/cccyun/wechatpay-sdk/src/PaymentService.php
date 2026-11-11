@@ -372,7 +372,7 @@ class PaymentService extends BaseService
      * @param bool $isSuccess 是否成功
      * @param string|null $msg 失败原因
      */
-    public function replyNotify(bool $isSuccess = true, ?string $msg = '')
+    public function replyNotify(bool $isSuccess = true, ?string $msg = '', bool $return = false)
     {
         $data = [];
         if ($isSuccess) {
@@ -383,6 +383,7 @@ class PaymentService extends BaseService
             $data['return_msg'] = $msg;
         }
         $xml = $this->array2Xml($data);
+        if ($return) return $xml;
         echo $xml;
     }
 }

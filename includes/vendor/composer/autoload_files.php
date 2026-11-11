@@ -6,5 +6,6 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    '3109cb1a231dcd04bee1f9f620d46975' => $vendorDir . '/paragonie/sodium_compat/autoload.php',
     '382a2ac8aeff4e600f8a2b1256c841e2' => $vendorDir . '/lpilp/guomi/src/overwrite.php',
 );

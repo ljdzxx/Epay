@@ -2,23 +2,29 @@
     "packages": [
         {
             "name": "cccyun/alipay-sdk",
-            "version": "1.7",
-            "version_normalized": "1.7.0.0",
+            "version": "1.10",
+            "version_normalized": "1.10.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/netcccyun/alipay-sdk-php.git",
-                "reference": "930f85d3f7ff31f53d64e8b39093b0bc24d51ed8"
+                "reference": "17987367ddecdc67b7a2b995ab896d711b464e72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/netcccyun/alipay-sdk-php/zipball/930f85d3f7ff31f53d64e8b39093b0bc24d51ed8",
-                "reference": "930f85d3f7ff31f53d64e8b39093b0bc24d51ed8",
+                "url": "https://api.github.com/repos/netcccyun/alipay-sdk-php/zipball/17987367ddecdc67b7a2b995ab896d711b464e72",
+                "reference": "17987367ddecdc67b7a2b995ab896d711b464e72",
                 "shasum": ""
             },
             "require": {
+                "ext-bcmath": "*",
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "ext-openssl": "*",
                 "php": ">=7.1"
             },
-            "time": "2024-03-01T02:22:04+00:00",
+            "time": "2026-03-16T04:54:47+00:00",
+            "published-time": "2026-03-16T04:52:28+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -43,29 +49,30 @@
             ],
             "support": {
                 "issues": "https://github.com/netcccyun/alipay-sdk-php/issues",
-                "source": "https://github.com/netcccyun/alipay-sdk-php/tree/1.7"
+                "source": "https://github.com/netcccyun/alipay-sdk-php/tree/1.10"
             },
             "install-path": "../cccyun/alipay-sdk"
         },
         {
             "name": "cccyun/qqpay-sdk",
-            "version": "1.2",
-            "version_normalized": "1.2.0.0",
+            "version": "1.3",
+            "version_normalized": "1.3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/netcccyun/qqpay-sdk-php.git",
-                "reference": "873e1d9f06f3cecdbad165fa921096437cc8bcbe"
+                "reference": "9c84c698daba6fb733b5d6b7ad576dc3a4f72085"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/netcccyun/qqpay-sdk-php/zipball/873e1d9f06f3cecdbad165fa921096437cc8bcbe",
-                "reference": "873e1d9f06f3cecdbad165fa921096437cc8bcbe",
+                "url": "https://api.github.com/repos/netcccyun/qqpay-sdk-php/zipball/9c84c698daba6fb733b5d6b7ad576dc3a4f72085",
+                "reference": "9c84c698daba6fb733b5d6b7ad576dc3a4f72085",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1"
             },
-            "time": "2023-04-02T02:46:22+00:00",
+            "time": "2026-03-16T04:57:40+00:00",
+            "published-time": "2026-03-16T04:58:22+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -91,29 +98,35 @@
             ],
             "support": {
                 "issues": "https://github.com/netcccyun/qqpay-sdk-php/issues",
-                "source": "https://github.com/netcccyun/qqpay-sdk-php/tree/1.2"
+                "source": "https://github.com/netcccyun/qqpay-sdk-php/tree/1.3"
             },
             "install-path": "../cccyun/qqpay-sdk"
         },
         {
             "name": "cccyun/wechatpay-sdk",
-            "version": "1.7",
-            "version_normalized": "1.7.0.0",
+            "version": "1.11",
+            "version_normalized": "1.11.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/netcccyun/wechatpay-sdk-php.git",
-                "reference": "c8912fd1af1f57a566d662433de2b23a72f8b2e7"
+                "reference": "2403c7118ea8fd7ffea73efd4254d4552338e94a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/netcccyun/wechatpay-sdk-php/zipball/c8912fd1af1f57a566d662433de2b23a72f8b2e7",
-                "reference": "c8912fd1af1f57a566d662433de2b23a72f8b2e7",
+                "url": "https://api.github.com/repos/netcccyun/wechatpay-sdk-php/zipball/2403c7118ea8fd7ffea73efd4254d4552338e94a",
+                "reference": "2403c7118ea8fd7ffea73efd4254d4552338e94a",
                 "shasum": ""
             },
             "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-libxml": "*",
+                "ext-openssl": "*",
+                "ext-simplexml": "*",
                 "php": ">=7.1"
             },
-            "time": "2023-12-28T08:50:42+00:00",
+            "time": "2026-03-16T04:56:37+00:00",
+            "published-time": "2026-03-16T04:57:10+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -139,31 +152,31 @@
             ],
             "support": {
                 "issues": "https://github.com/netcccyun/wechatpay-sdk-php/issues",
-                "source": "https://github.com/netcccyun/wechatpay-sdk-php/tree/1.7"
+                "source": "https://github.com/netcccyun/wechatpay-sdk-php/tree/1.11"
             },
             "install-path": "../cccyun/wechatpay-sdk"
         },
         {
-            "name": "fgrosse/phpasn1",
-            "version": "v2.5.0",
-            "version_normalized": "2.5.0.0",
+            "name": "genkgo/php-asn1",
+            "version": "v2.9.0",
+            "version_normalized": "2.9.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/fgrosse/PHPASN1.git",
-                "reference": "42060ed45344789fb9f21f9f1864fc47b9e3507b"
+                "url": "https://github.com/genkgo/php-asn1.git",
+                "reference": "dc535345d0ecc69181c6a1e17e57a625bd01f891"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fgrosse/PHPASN1/zipball/42060ed45344789fb9f21f9f1864fc47b9e3507b",
-                "reference": "42060ed45344789fb9f21f9f1864fc47b9e3507b",
+                "url": "https://api.github.com/repos/genkgo/php-asn1/zipball/dc535345d0ecc69181c6a1e17e57a625bd01f891",
+                "reference": "dc535345d0ecc69181c6a1e17e57a625bd01f891",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1 || ^8.0"
+                "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0"
             },
             "require-dev": {
                 "php-coveralls/php-coveralls": "~2.0",
-                "phpunit/phpunit": "^7.0 || ^8.0 || ^9.0"
+                "phpunit/phpunit": "^9.0"
             },
             "suggest": {
                 "ext-bcmath": "BCmath is the fallback extension for big integer calculations",
@@ -171,7 +184,8 @@
                 "ext-gmp": "GMP is the preferred extension for big integer calculations",
                 "phpseclib/bcmath_compat": "BCmath polyfill for servers where neither GMP nor BCmath is available"
             },
-            "time": "2022-12-19T11:08:26+00:00",
+            "time": "2026-01-06T11:43:05+00:00",
+            "published-time": "2026-01-06T11:44:55+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -190,6 +204,11 @@
             ],
             "authors": [
                 {
+                    "name": "Frederik Bosch",
+                    "email": "f.bosch@genkgo.nl",
+                    "role": "Author"
+                },
+                {
                     "name": "Friedrich Große",
                     "email": "friedrich.grosse@gmail.com",
                     "homepage": "https://github.com/FGrosse",
@@ -197,7 +216,7 @@
                 },
                 {
                     "name": "All contributors",
-                    "homepage": "https://github.com/FGrosse/PHPASN1/contributors"
+                    "homepage": "https://github.com/genkgo/php-asn1/contributors"
                 }
             ],
             "description": "A PHP Framework that allows you to encode and decode arbitrary ASN.1 structures using the ITU-T X.690 Encoding Rules.",
@@ -216,32 +235,32 @@
                 "x690"
             ],
             "support": {
-                "issues": "https://github.com/fgrosse/PHPASN1/issues",
-                "source": "https://github.com/fgrosse/PHPASN1/tree/v2.5.0"
+                "issues": "https://github.com/genkgo/php-asn1/issues",
+                "source": "https://github.com/genkgo/php-asn1/tree/v2.9.0"
             },
-            "abandoned": true,
-            "install-path": "../fgrosse/phpasn1"
+            "install-path": "../genkgo/php-asn1"
         },
         {
             "name": "lpilp/guomi",
-            "version": "v1.0.9",
-            "version_normalized": "1.0.9.0",
+            "version": "v2.0.0",
+            "version_normalized": "2.0.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lpilp/phpsm2sm3sm4.git",
-                "reference": "9d342416acec45db0d38dd3a8fbc1904463e6b31"
+                "reference": "cca566775f5c60298cb7bf360dde08f4d9fc77ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lpilp/phpsm2sm3sm4/zipball/9d342416acec45db0d38dd3a8fbc1904463e6b31",
-                "reference": "9d342416acec45db0d38dd3a8fbc1904463e6b31",
+                "url": "https://api.github.com/repos/lpilp/phpsm2sm3sm4/zipball/cca566775f5c60298cb7bf360dde08f4d9fc77ec",
+                "reference": "cca566775f5c60298cb7bf360dde08f4d9fc77ec",
                 "shasum": ""
             },
             "require": {
-                "mdanter/ecc": "^1.0",
+                "paragonie/ecc": "^2.0",
                 "php": ">=7.2"
             },
-            "time": "2024-02-04T08:43:06+00:00",
+            "time": "2024-09-24T11:05:13+00:00",
+            "published-time": "2025-01-07T10:23:09+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -258,43 +277,51 @@
             ],
             "authors": [
                 {
-                    "name": "recent",
-                    "email": "lpilp@126.com"
+                    "name": "recent"
                 }
             ],
             "description": "国密sm2",
             "support": {
                 "issues": "https://github.com/lpilp/phpsm2sm3sm4/issues",
-                "source": "https://github.com/lpilp/phpsm2sm3sm4/tree/v1.0.9"
+                "source": "https://github.com/lpilp/phpsm2sm3sm4/tree/v2.0.0"
             },
             "install-path": "../lpilp/guomi"
         },
         {
-            "name": "mdanter/ecc",
-            "version": "v1.0.0",
-            "version_normalized": "1.0.0.0",
+            "name": "paragonie/ecc",
+            "version": "v2.6.0",
+            "version_normalized": "2.6.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/phpecc/phpecc.git",
-                "reference": "34e2eec096bf3dcda814e8f66dd91ae87a2db7cd"
+                "url": "https://github.com/paragonie/phpecc.git",
+                "reference": "1a49380410b8ce826bc7fd3de6324053e049205c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpecc/phpecc/zipball/34e2eec096bf3dcda814e8f66dd91ae87a2db7cd",
-                "reference": "34e2eec096bf3dcda814e8f66dd91ae87a2db7cd",
+                "url": "https://api.github.com/repos/paragonie/phpecc/zipball/1a49380410b8ce826bc7fd3de6324053e049205c",
+                "reference": "1a49380410b8ce826bc7fd3de6324053e049205c",
                 "shasum": ""
             },
             "require": {
                 "ext-gmp": "*",
-                "fgrosse/phpasn1": "^2.0",
-                "php": "^7.0||^8.0"
+                "genkgo/php-asn1": "^2",
+                "paragonie/sodium_compat": "^1|^2",
+                "php": "^7.1||^8.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^6.0||^8.0||^9.0",
-                "squizlabs/php_codesniffer": "^2.0",
-                "symfony/yaml": "^2.6|^3.0"
+                "bitcoin/bips": "dev-master",
+                "c2sp/wycheproof": "dev-master",
+                "ext-json": "*",
+                "phpunit/phpunit": "^6|^7|^8|^9",
+                "squizlabs/php_codesniffer": "^2|^3",
+                "symfony/yaml": "^2.6|^3.0|^4|^5|^6|^7",
+                "vimeo/psalm": "^2|^3|^4|^5|^6"
             },
-            "time": "2021-01-16T19:42:14+00:00",
+            "suggest": {
+                "ext-openssl": "(PHP 8.1, OpenSSL 3+) Improved performance, less worries about side-channels"
+            },
+            "time": "2026-08-20T07:00:03+00:00",
+            "published-time": "2026-08-20T07:00:28+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -308,20 +335,26 @@
             ],
             "authors": [
                 {
+                    "name": "Paragon Initiative Enterprises",
+                    "email": "security@paragonie.com",
+                    "homepage": "https://paragonie.com",
+                    "role": "New Maintainer"
+                },
+                {
                     "name": "Matyas Danter",
                     "homepage": "http://matejdanter.com/",
-                    "role": "Author"
+                    "role": "Previous Author"
                 },
                 {
                     "name": "Thibaud Fabre",
                     "email": "thibaud@aztech.io",
                     "homepage": "http://aztech.io",
-                    "role": "Maintainer"
+                    "role": "Previous Maintainer"
                 },
                 {
                     "name": "Thomas Kerin",
                     "email": "afk11@users.noreply.github.com",
-                    "role": "Maintainer"
+                    "role": "Previous Maintainer"
                 }
             ],
             "description": "PHP Elliptic Curve Cryptography library",
@@ -343,13 +376,112 @@
                 "secp256r1"
             ],
             "support": {
-                "issues": "https://github.com/phpecc/phpecc/issues",
-                "source": "https://github.com/phpecc/phpecc/tree/v1.0.0"
+                "issues": "https://github.com/paragonie/phpecc/issues",
+                "source": "https://github.com/paragonie/phpecc/tree/v2.6.0"
             },
-            "abandoned": "paragonie/ecc",
-            "install-path": "../mdanter/ecc"
+            "install-path": "../paragonie/ecc"
+        },
+        {
+            "name": "paragonie/sodium_compat",
+            "version": "v2.5.2",
+            "version_normalized": "2.5.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paragonie/sodium_compat.git",
+                "reference": "3246b36803c177847e677862fedeb7f937869adb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paragonie/sodium_compat/zipball/3246b36803c177847e677862fedeb7f937869adb",
+                "reference": "3246b36803c177847e677862fedeb7f937869adb",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1",
+                "php-64bit": "*"
+            },
+            "require-dev": {
+                "infection/infection": "^0",
+                "nikic/php-fuzzer": "^0",
+                "phpunit/phpunit": "^7|^8|^9|^10|^11",
+                "vimeo/psalm": "^4|^5|^6"
+            },
+            "suggest": {
+                "ext-sodium": "Better performance, password hashing (Argon2i), secure memory management (memzero), and better security."
+            },
+            "time": "2026-08-18T23:46:48+00:00",
+            "published-time": "2026-08-18T23:47:50+00:00",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "files": [
+                    "autoload.php"
+                ],
+                "psr-4": {
+                    "ParagonIE\\Sodium\\": "namespaced/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "ISC"
+            ],
+            "authors": [
+                {
+                    "name": "Paragon Initiative Enterprises",
+                    "email": "security@paragonie.com"
+                },
+                {
+                    "name": "Frank Denis",
+                    "email": "jedisct1@pureftpd.org"
+                }
+            ],
+            "description": "Pure PHP implementation of libsodium; uses the PHP extension if it exists",
+            "keywords": [
+                "Authentication",
+                "BLAKE2b",
+                "ChaCha20",
+                "ChaCha20-Poly1305",
+                "Chapoly",
+                "Curve25519",
+                "Ed25519",
+                "EdDSA",
+                "Edwards-curve Digital Signature Algorithm",
+                "Elliptic Curve Diffie-Hellman",
+                "Poly1305",
+                "Pure-PHP cryptography",
+                "RFC 7748",
+                "RFC 8032",
+                "Salpoly",
+                "Salsa20",
+                "X25519",
+                "XChaCha20-Poly1305",
+                "XSalsa20-Poly1305",
+                "Xchacha20",
+                "Xsalsa20",
+                "aead",
+                "cryptography",
+                "ecdh",
+                "elliptic curve",
+                "elliptic curve cryptography",
+                "encryption",
+                "libsodium",
+                "php",
+                "public-key cryptography",
+                "secret-key cryptography",
+                "side-channel resistant"
+            ],
+            "support": {
+                "issues": "https://github.com/paragonie/sodium_compat/issues",
+                "source": "https://github.com/paragonie/sodium_compat/tree/v2.5.2"
+            },
+            "install-path": "../paragonie/sodium_compat"
         }
     ],
-    "dev": true,
+    "dev": false,
     "dev-package-names": []
 }

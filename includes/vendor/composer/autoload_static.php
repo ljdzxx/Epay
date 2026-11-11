@@ -4,61 +4,70 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInita012aca486d6abc048243f4697c6ac40
+class ComposerStaticInitaba134bc402974c18d6bdb33761317cb
 {
     public static $files = array (
+        '3109cb1a231dcd04bee1f9f620d46975' => __DIR__ . '/..' . '/paragonie/sodium_compat/autoload.php',
         '382a2ac8aeff4e600f8a2b1256c841e2' => __DIR__ . '/..' . '/lpilp/guomi/src/overwrite.php',
     );
 
     public static $prefixLengthsPsr4 = array (
-        'W' => 
+        'W' =>
         array (
             'WeChatPay\\' => 10,
         ),
-        'R' => 
+        'R' =>
         array (
             'Rtgm\\' => 5,
         ),
-        'Q' => 
+        'Q' =>
         array (
             'QQPay\\' => 6,
         ),
-        'M' => 
+        'P' =>
+        array (
+            'ParagonIE\\Sodium\\' => 17,
+        ),
+        'M' =>
         array (
             'Mdanter\\Ecc\\' => 12,
         ),
-        'F' => 
+        'F' =>
         array (
             'FG\\' => 3,
         ),
-        'A' => 
+        'A' =>
         array (
             'Alipay\\' => 7,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'WeChatPay\\' => 
+        'WeChatPay\\' =>
         array (
             0 => __DIR__ . '/..' . '/cccyun/wechatpay-sdk/src',
         ),
-        'Rtgm\\' => 
+        'Rtgm\\' =>
         array (
             0 => __DIR__ . '/..' . '/lpilp/guomi/src',
         ),
-        'QQPay\\' => 
+        'QQPay\\' =>
         array (
             0 => __DIR__ . '/..' . '/cccyun/qqpay-sdk/src',
         ),
-        'Mdanter\\Ecc\\' => 
+        'ParagonIE\\Sodium\\' =>
         array (
-            0 => __DIR__ . '/..' . '/mdanter/ecc/src',
+            0 => __DIR__ . '/..' . '/paragonie/sodium_compat/namespaced',
         ),
-        'FG\\' => 
+        'Mdanter\\Ecc\\' =>
         array (
-            0 => __DIR__ . '/..' . '/fgrosse/phpasn1/lib',
+            0 => __DIR__ . '/..' . '/paragonie/ecc/src',
         ),
-        'Alipay\\' => 
+        'FG\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/genkgo/php-asn1/lib',
+        ),
+        'Alipay\\' =>
         array (
             0 => __DIR__ . '/..' . '/cccyun/alipay-sdk/src',
         ),
@@ -71,9 +80,9 @@ class ComposerStaticInita012aca486d6abc048243f4697c6ac40
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInita012aca486d6abc048243f4697c6ac40::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInita012aca486d6abc048243f4697c6ac40::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInita012aca486d6abc048243f4697c6ac40::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitaba134bc402974c18d6bdb33761317cb::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitaba134bc402974c18d6bdb33761317cb::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitaba134bc402974c18d6bdb33761317cb::$classMap;
 
         }, null, ClassLoader::class);
     }
