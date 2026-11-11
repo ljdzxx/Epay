@@ -74,6 +74,8 @@ docker compose -p "$EPAY_COMPOSE_PROJECT" -f docker-compose.php-only.yml run --r
 
 以下命令使用镜像内的 `www-data` 用户设置必要权限，不依赖宿主机用户名与容器 UID 一致。源码保持正常可读，数据库配置只供属主和 PHP 所在组读取；安装锁、后台登录锁及上传目录需要可写。
 
+镜像新增了启动入口：每次启动 PHP-FPM 服务前，会自动修正挂载目录中**所有插件、所有商户**的读取权限。权限处理使用容器内 `www-data` 的组 ID；FPM 工作进程仍使用 `www-data`，启动入口需以默认 root 用户运行。不要给 Compose 的 PHP 服务添加 `user: www-data`。
+
 ```bash
 docker compose -p "$EPAY_COMPOSE_PROJECT" -f docker-compose.php-only.yml run --rm --no-deps --user root php sh -eu -c '
     mkdir -p assets/uploads
@@ -87,7 +89,28 @@ docker compose -p "$EPAY_COMPOSE_PROJECT" -f docker-compose.php-only.yml ps
 docker compose -p "$EPAY_COMPOSE_PROJECT" -f docker-compose.php-only.yml logs --tail=100 php
 ```
 
-项目目录绑定到容器 `/opt/epay`，所以配置、上传文件和安装锁保存在宿主机，不会随容器重建丢失。支付插件需要更新证书或写日志时，再为其实际使用的对应目录赋予写入权限；无需把整个项目设为 `777`。
+项目目录绑定到容器 `/opt/epay`，其中包含 `plugins/`，不需要再单独挂载插件目录。配置、上传文件、支付证书和安装锁保存在宿主机，不会随容器重建丢失。迁移时仍须从旧服务器同步真实证书；仓库代码和数据库不能替代这些文件。
+
+启动入口的具体处理范围：
+
+- 给插件目录补充 PHP 所在组的读取、进入权限，给插件普通文件补充组读取权限；不额外授予插件源码写权限。
+- 递归处理所有名为 `cert` 的插件证书目录，包括商户子目录及 `inc/cert`。证书目录设为 `2770`，普通证书和私钥文件设为 `640`；SDK 会自动更新的 `cert.pem` 设为 `660`。因此迁移过来的 `root:root 600` 私钥也可被 PHP 读取。
+- 使用 setgid 让新建证书子目录继承组。不跟随插件树中的符号链接；证书应作为真实文件放在挂载的项目内。
+- 不加载应用配置、不连接数据库、不触发安装、升级或支付请求。运行 `php ...`、`php-fpm -t` 等诊断命令时跳过自动修正。正式启动时如权限处理失败，容器会报告错误并停止启动。
+
+**运行中新增或替换任意商户证书后**，执行统一命令即可生效，无需填写商户号，也无需重启：
+
+```bash
+docker compose -p "$EPAY_COMPOSE_PROJECT" -f docker-compose.php-only.yml exec -T --user root php epay-fix-plugin-permissions
+```
+
+自动上传或同步证书时，将这条命令放在同步成功后的步骤中。启动入口不是文件监听服务：复制工具保留的 `600` 权限或移动进来的文件不会因父目录 setgid 自动变为可读；新文件在上传后执行该命令，或在下次容器启动时统一修正。其他插件自定义日志目录按其实际需要另行设置写权限。
+
+镜像构建后可运行权限回归检查。该检查仅在容器 `/tmp` 创建模拟文件，验证多插件、多商户、后续新增商户、平台证书写权限、重复执行以及启动命令分流，不读取真实证书、不连接数据库：
+
+```bash
+docker compose -p "$EPAY_COMPOSE_PROJECT" -f docker-compose.php-only.yml run --rm --no-deps --user root php sh docker/php/tests/test-permissions.sh
+```
 
 ### 5. 配置宿主机 Nginx
 
@@ -233,6 +256,8 @@ docker compose -p "$EPAY_COMPOSE_PROJECT" -f docker-compose.php-only.yml logs --
 ```
 
 应看到 PHP 8.3.36、CLI 的 `upload_progress=0`，以及 FPM 对应设置为 `Off`。若服务器额外挂载了 INI 或配置了 FPM pool 覆盖项，需要一并核对最终设置。
+
+本次同时新增镜像内的 `epay-entrypoint` 和 `epay-fix-plugin-permissions`。需同步整个 `docker/php/` 后重建镜像、重建容器；只更新宿主机脚本或重启旧镜像不会获得新的启动入口。新容器启动日志应包含 `Plugin and merchant certificate permissions prepared`，表示已处理当前挂载目录中的插件和商户证书权限。
 
 本项目通过 `build:` 创建应用镜像，因此只运行 `docker compose pull` 或 `docker compose restart` 不会完成此次升级。宿主机升级 PHP 也不会替换容器内的 PHP。
 

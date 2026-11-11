@@ -1,0 +1,2 @@
+docker/php/*.sh text eol=lf
+docker/php/tests/*.sh text eol=lf

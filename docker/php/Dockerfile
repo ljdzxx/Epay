@@ -24,5 +24,10 @@ RUN set -eux; \
     && rm -rf /var/lib/apt/lists/*
 
 COPY docker/php/conf.d/zz-security.ini /usr/local/etc/php/conf.d/zz-security.ini
+COPY --chmod=0755 docker/php/epay-entrypoint.sh /usr/local/bin/epay-entrypoint
+COPY --chmod=0755 docker/php/epay-fix-plugin-permissions.sh /usr/local/bin/epay-fix-plugin-permissions
 
 WORKDIR /opt/epay
+
+ENTRYPOINT ["epay-entrypoint"]
+CMD ["php-fpm"]
